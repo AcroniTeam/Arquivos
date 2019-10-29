@@ -128,7 +128,7 @@ INSERT INTO tblProdutoDaLoja VALUES ('Varuna', '', 1.15,4,15,42, 264.99, 'Redrag
 INSERT INTO tblProdutoDaLoja VALUES ('Yama','',1.9,5,29,52,389.99,'Redragon')
 
 -- USUÁRIO PADRÃO
-insert into tblCliente(nome, usuario, senha) values ('teste','teste','teste')
+insert into tblCliente(nome, usuario, senha, tipoConta) values ('teste','teste','teste', 'p')
 
 select * from tblCliente
 select * from tblColecao
