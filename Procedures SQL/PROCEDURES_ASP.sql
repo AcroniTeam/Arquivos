@@ -43,6 +43,13 @@ BEGIN
 		SELECT * FROM tblProdutoDaloja WHERE id_produto > 3
 	ELSE IF @aux = 'carrinho'
 		SELECT * FROM tblProdutoDaLoja WHERE id_produto in (@id1, @id2, @id3)
+	ELSE IF @aux = 'carrinhocustom'
+		BEGIN
+		declare @B varbinary(max)
+		set @B = (SELECT imagem_teclado FROM tblTecladoCustomizado WHERE id_teclado_customizado = @id1)
+		
+		SELECT id_teclado_customizado, (select cast('' as xml).value('xs:base64Binary(sql:variable("@B"))', 'varchar(max)')) as imagem_teclado, preco, nickname FROM tblTecladoCustomizado WHERE id_teclado_customizado in (@id1, @id2, @id3)
+		END
 END
 GO
 CREATE PROCEDURE usp_segundoGaleria (
